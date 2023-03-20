@@ -26,7 +26,7 @@ func newTweetHandlers(superGroup *gin.RouterGroup, t usecase.Tweet, m middleware
 		tweetGroup.GET("/feed", handler.showFeed)
 		tweetGroup.GET("/:id", handler.getTweetByID)
 		tweetGroup.POST("/", m.RequireAuth, handler.post)
-		tweetGroup.DELETE("/:id", handler.deleteTweetByID)
+		tweetGroup.DELETE("/:id", m.RequireAuth, handler.deleteTweetByID)
 	}
 }
 
